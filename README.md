@@ -1,8 +1,8 @@
+# cordova-plugin-nlbarcodescanner
 
 # BarcodeScannerPlugin
+Cordova plugin to interface with NLSCAN barcode scanners (on Android)
 This is a cordova plugin for U9000 - Newland 2DEM3090.
-
-
 
 # How to install
 
