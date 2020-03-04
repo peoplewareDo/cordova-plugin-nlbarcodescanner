@@ -177,7 +177,8 @@ public class BarcodeScanner extends CordovaPlugin {
      *@company Peopleware S.R.L.
      *@describe unregist scan receiver when destroy
      **/
-    protected void onDestroy() {
+    @Override
+    public void onDestroy() {
         super.onDestroy();
         if (sm != null) {
             sm.stopScan();
@@ -186,17 +187,17 @@ public class BarcodeScanner extends CordovaPlugin {
         }
     }
 
-    protected void onPause() {
-        super.onPause();
-        context.unregisterReceiver(mScanReceiver);
-    }
+    // protected void onPause() {
+    //     super.onPause();
+    //     context.unregisterReceiver(mScanReceiver);
+    // }
 
-    protected void onResume() {
-        super.onResume();
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(SCAN_ACTION);
-        context.registerReceiver(mScanReceiver, filter);
-    }
+    // protected void onResume() {
+    //     super.onResume();
+    //     IntentFilter filter = new IntentFilter();
+    //     filter.addAction(SCAN_ACTION);
+    //     context.registerReceiver(mScanReceiver, filter);
+    // }
 
   
 }
