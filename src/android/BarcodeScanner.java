@@ -26,7 +26,7 @@ public class BarcodeScanner extends CordovaPlugin {
 
     private BroadcastReceiver mScanReceiver;
     private final static String SCAN_ACTION = "scan.rcv.message";
-    private static final String SCANNER_RESULT = "barcode";
+    private static final String SCANNER_RESULT = "nlscan.action.SCANNER_RESULT";
     // private static final String SCANNER_TRIG = "nlscan.action.SCANNER_TRIG";
     // private static final String ACTION_BAR_SCANCFG = "ACTION_BAR_SCANCFG";
     private static final String Tag = "BarcodeScannerTag";
