@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.device.ScanDevice;
 import android.os.Bundle;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -117,7 +118,7 @@ public class BarcodeScanner extends CordovaPlugin {
                     broadcast.putString("data", barcodeStr);
                     intentResult.putExtras(broadcast);
 
-                    context.sendBroadcast(intentResult, "com.peopleware.barcodescanner.RESULT");
+                    context.sendBroadcast(intentResult);
 
                     // activity.runOnUiThread(new Runnable() {
                     //     @Override
@@ -156,7 +157,7 @@ public class BarcodeScanner extends CordovaPlugin {
                 }
             };
             IntentFilter intFilter = new IntentFilter(SCANNER_RESULT);
-            context.registerReceiver(mScanReceiver, intFilter);
+            LocalBroadcastManager.getInstance(this.activity).registerReceiver(mScanReceiver, intFilter);
             registeredTag = true;
         }
 
