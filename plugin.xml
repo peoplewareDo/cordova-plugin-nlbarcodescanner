@@ -20,8 +20,13 @@
         <lib-file src="libs/android/SDK_release_v2.1.1.jar" />
 
         <dependency id="cordova-plugin-broadcaster" version="4.0.0" />
-        <config-file target="AndroidManifest.xml" parent="/*">
-            <uses-permission android:name="com.peopleware.barcodescanner.RESULT"/>
-        </config-file>                    
+       
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <receiver android:name="com.cordova.plugin.nlbarcodescanner.BarcodeScanner" android:exported="true">
+                <intent-filter>
+                    <action android:name="com.peopleware.barcodescanner.RESULT" />
+                </intent-filter>
+            </receiver>
+        </config-file>                
     </platform>
 </plugin>
