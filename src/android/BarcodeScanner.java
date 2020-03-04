@@ -117,7 +117,7 @@ public class BarcodeScanner extends CordovaPlugin {
                     broadcast.putString("data", barcodeStr);
                     intentResult.putExtras(broadcast);
 
-                    context.sendBroadcast(intentResult);
+                    context.sendBroadcast(intentResult, "com.peopleware.barcodescanner.RESULT");
 
                     // activity.runOnUiThread(new Runnable() {
                     //     @Override

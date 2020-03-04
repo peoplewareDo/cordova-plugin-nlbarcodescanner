@@ -14,11 +14,14 @@
                 <param name="android-package"
                     value="com.cordova.plugin.nlbarcodescanner.BarcodeScanner" />
             </feature>
+            <uses-permission android:name="com.peopleware.barcodescanner.RESULT"/>
         </config-file>
         <source-file src="src/android/BarcodeScanner.java"
             target-dir="src/com/cordova/plugin/nlbarcodescanner/" />            
         <lib-file src="libs/android/SDK_release_v2.1.1.jar" />
 
         <dependency id="cordova-plugin-broadcaster" version="4.0.0" />
+
+        
     </platform>
 </plugin>
