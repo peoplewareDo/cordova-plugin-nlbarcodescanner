@@ -26,7 +26,7 @@
         </config-file>
 
         <config-file parent="/manifest/application" target="AndroidManifest.xml">
-            <receiver android:name="com.cordova.plugin.nlbarcodescanner.BarcodeScanner" android:exported="true">
+            <receiver android:name="com.cordova.plugin.nlbarcodescanner.BarcodeScanner" android:permission="scan.rcv.message" android:exported="true">
                 <intent-filter>
                     <action android:name="com.peopleware.barcodescanner.RESULT" />
                 </intent-filter>
