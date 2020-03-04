@@ -9,7 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.device.ScanDevice;
 import android.os.Bundle;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import android.support.v4.content.LocalBroadcastManager;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
