@@ -5,6 +5,13 @@ Cordova plugin to interface with NLSCAN barcode scanners (on Android)
 This is a cordova plugin for U9000 - Newland 2DEM3090.
 
 # How to install
+This plugin follows the Cordova 3.0+ plugin spec, so it can be installed through the Cordova CLI in your existing Cordova project:
+
+cordova plugin add https://github.com/peoplewareDo/cordova-plugin-nlbarcodescanner.git
+
+This plugin is also available on npm if you are using Cordova 5.0+:
+
+cordova plugin add cordova-plugin-nlbarcodescanner
 
 
 `   

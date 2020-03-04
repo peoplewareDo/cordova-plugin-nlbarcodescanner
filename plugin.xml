@@ -19,6 +19,6 @@
             target-dir="src/com/cordova/plugin/nlbarcodescanner/" />            
         <lib-file src="libs/android/SDK_release_v2.1.1.jar" />
 
-        <dependency id="cordova-plugin-broadcaster" version="4.0.0">
+        <dependency id="cordova-plugin-broadcaster" version="4.0.0" />
     </platform>
 </plugin>
