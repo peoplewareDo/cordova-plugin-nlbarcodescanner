@@ -157,7 +157,7 @@ public class BarcodeScanner extends CordovaPlugin {
                 }
             };
             IntentFilter intFilter = new IntentFilter(SCANNER_RESULT);
-            LocalBroadcastManager.getInstance(this.activity).registerReceiver(mScanReceiver, intFilter, "scan.rcv.message");
+            LocalBroadcastManager.getInstance(this.activity).registerReceiver(mScanReceiver, intFilter, "scan.rcv.message", null);
             registeredTag = true;
         }
 
