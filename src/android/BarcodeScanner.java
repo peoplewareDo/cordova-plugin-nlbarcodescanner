@@ -201,12 +201,12 @@ public class BarcodeScanner extends CordovaPlugin {
     //     context.unregisterReceiver(mScanReceiver);
     // }
 
-    // protected void onResume() {
-    //     super.onResume();
-    //     IntentFilter filter = new IntentFilter();
-    //     filter.addAction(SCAN_ACTION);
-    //     context.registerReceiver(mScanReceiver, filter);
-    // }
+    protected void onResume() {
+        //super.onResume();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(SCAN_ACTION);
+        context.registerReceiver(mScanReceiver, filter);
+    }
 
   
 }
