@@ -23,6 +23,7 @@
         
         <config-file parent="/*" target="AndroidManifest.xml">
             <protected-broadcast android:name="scan.rcv.message" />
+            <uses-permission android:name="scan.rcv.message" />
         </config-file>
 
         <config-file parent="/manifest/application" target="AndroidManifest.xml">
