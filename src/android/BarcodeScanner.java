@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.text.TextUtils;
 import android.util.Log;
 import android.device.ScanDevice;
+import android.os.Bundle;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -29,6 +30,7 @@ public class BarcodeScanner extends CordovaPlugin {
     // private static final String SCANNER_TRIG = "nlscan.action.SCANNER_TRIG";
     // private static final String ACTION_BAR_SCANCFG = "ACTION_BAR_SCANCFG";
     private static final String Tag = "BarcodeScannerTag";
+    private String barcodeStr;
     private Context context;
     private static boolean registeredTag = false;
     private Activity activity;
@@ -74,19 +76,19 @@ public class BarcodeScanner extends CordovaPlugin {
      **/
     @Override
     public boolean execute(String action, JSONArray para, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("scan")) {
-            Log.d(Tag,"execute method is called");
-            Intent intent = new Intent(SCANNER_TRIG);
-            context.sendBroadcast(intent);
-            return true;
-        } else if(action.equals("scanSetting")){
-            Log.d(Tag,"Action:"+para.getString(0)+" Para:"+para.getString(1));
-            Intent intent = new Intent (ACTION_BAR_SCANCFG);
-            intent.putExtra(para.getString(0), Integer.parseInt(para.getString(1)));
-            context.sendBroadcast(intent);
-            return true;
+        // if (action.equals("scan")) {
+        //     Log.d(Tag,"execute method is called");
+        //     Intent intent = new Intent(SCANNER_TRIG);
+        //     context.sendBroadcast(intent);
+        //     return true;
+        // } else if(action.equals("scanSetting")){
+        //     Log.d(Tag,"Action:"+para.getString(0)+" Para:"+para.getString(1));
+        //     Intent intent = new Intent (ACTION_BAR_SCANCFG);
+        //     intent.putExtra(para.getString(0), Integer.parseInt(para.getString(1)));
+        //     context.sendBroadcast(intent);
+        //     return true;
 
-        }
+        // }
         return false;
     }
 
@@ -112,11 +114,11 @@ public class BarcodeScanner extends CordovaPlugin {
                     activity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Log.d(Tag, "result:" + result);
+                            Log.d(Tag, "result:" + barcodeStr);
                             //webView.loadUrl("javascript:nlscan.plugins.barcodescanner.show('" + barcodeStr + "')");
                             final Intent intent = new Intent("didShow");
                             final Bundle broadcast = new Bundle();
-                            broadcast.putString("data", result);
+                            broadcast.putString("data", barcodeStr);
                             intent.putExtras(broadcast);
 
                             context.sendBroadcast(intent);
@@ -145,8 +147,8 @@ public class BarcodeScanner extends CordovaPlugin {
                     // }
                 }
             };
-            IntentFilter intFilter = new IntentFilter(SCANNER_RESULT);
-            context.registerReceiver(mScanReceiver, intFilter);
+            //IntentFilter intFilter = new IntentFilter(SCANNER_RESULT);
+            context.registerReceiver(mScanReceiver, intent);
             registeredTag = true;
         }
 

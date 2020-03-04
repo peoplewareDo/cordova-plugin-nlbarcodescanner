@@ -24,12 +24,6 @@ cordova plugin add cordova-plugin-nlbarcodescanner
 
     window.broadcaster.addEventListener( "didShow", listener);    console.log( "register didShow received!" );
 
-    var listener = function( e ) {
-      //log: didShow received! userInfo: {"data":"test"}
-      console.log( "didShow received! userInfo: " + JSON.stringify(e)  );
-    }
-
-    window.broadcaster.addEventListener( "didShow", listener);
 `
 
 
