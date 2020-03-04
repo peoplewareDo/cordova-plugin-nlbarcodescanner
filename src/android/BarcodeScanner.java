@@ -116,7 +116,7 @@ public class BarcodeScanner extends CordovaPlugin {
                         public void run() {
                             Log.d(Tag, "result:" + barcodeStr);
                             //webView.loadUrl("javascript:nlscan.plugins.barcodescanner.show('" + barcodeStr + "')");
-                            final Intent intent = new Intent("didShow");
+                            final Intent intent = new Intent("barcode");
                             final Bundle broadcast = new Bundle();
                             broadcast.putString("data", barcodeStr);
                             intent.putExtras(broadcast);
