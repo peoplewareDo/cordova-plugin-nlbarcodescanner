@@ -110,21 +110,29 @@ public class BarcodeScanner extends CordovaPlugin {
                     byte[] aimid = intent.getByteArrayExtra("aimid");
                     barcodeStr = new String(barocode, 0, barocodelen);
                     sm.stopScan();
+                    Log.d(Tag, "result:" + barcodeStr);
 
-                    activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Log.d(Tag, "result:" + barcodeStr);
-                            //webView.loadUrl("javascript:nlscan.plugins.barcodescanner.show('" + barcodeStr + "')");
-                            final Intent intent = new Intent("barcode");
-                            final Bundle broadcast = new Bundle();
-                            broadcast.putString("data", barcodeStr);
-                            intent.putExtras(broadcast);
+                    final Intent intentResult = new Intent("barcode");
+                    final Bundle broadcast = new Bundle();
+                    broadcast.putString("data", barcodeStr);
+                    intentResult.putExtras(broadcast);
 
-                            context.sendBroadcast(intent);
-                            //LocalBroadcastManager.getInstance(this).sendBroadcastSync(intent);                            
-                        }
-                    });                    
+                    context.sendBroadcast(intentResult);
+
+                    // activity.runOnUiThread(new Runnable() {
+                    //     @Override
+                    //     public void run() {
+                    //         Log.d(Tag, "result:" + barcodeStr);
+                    //         //webView.loadUrl("javascript:nlscan.plugins.barcodescanner.show('" + barcodeStr + "')");
+                    //         final Intent intent = new Intent("barcode");
+                    //         final Bundle broadcast = new Bundle();
+                    //         broadcast.putString("data", barcodeStr);
+                    //         intent.putExtras(broadcast);
+
+                    //         context.sendBroadcast(intent);
+                    //         //LocalBroadcastManager.getInstance(this).sendBroadcastSync(intent);                            
+                    //     }
+                    // });                    
 
 
                     // String action = intent.getAction();
