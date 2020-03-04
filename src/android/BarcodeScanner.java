@@ -26,7 +26,7 @@ public class BarcodeScanner extends CordovaPlugin {
 
     private BroadcastReceiver mScanReceiver;
     private final static String SCAN_ACTION = "scan.rcv.message";
-    // private static final String SCANNER_RESULT = "nlscan.action.SCANNER_RESULT";
+    private static final String SCANNER_RESULT = "barcode";
     // private static final String SCANNER_TRIG = "nlscan.action.SCANNER_TRIG";
     // private static final String ACTION_BAR_SCANCFG = "ACTION_BAR_SCANCFG";
     private static final String Tag = "BarcodeScannerTag";
@@ -147,8 +147,8 @@ public class BarcodeScanner extends CordovaPlugin {
                     // }
                 }
             };
-            //IntentFilter intFilter = new IntentFilter(SCANNER_RESULT);
-            context.registerReceiver(mScanReceiver, intent);
+            IntentFilter intFilter = new IntentFilter(SCANNER_RESULT);
+            context.registerReceiver(mScanReceiver, intFilter);
             registeredTag = true;
         }
 
@@ -177,7 +177,6 @@ public class BarcodeScanner extends CordovaPlugin {
      *@company Peopleware S.R.L.
      *@describe unregist scan receiver when destroy
      **/
-    @Override
     protected void onDestroy() {
         super.onDestroy();
         if (sm != null) {
@@ -187,18 +186,16 @@ public class BarcodeScanner extends CordovaPlugin {
         }
     }
 
-    @Override
     protected void onPause() {
         super.onPause();
-        this.unregisterReceiver(mScanReceiver);
+        context.unregisterReceiver(mScanReceiver);
     }
 
-    @Override
     protected void onResume() {
         super.onResume();
         IntentFilter filter = new IntentFilter();
         filter.addAction(SCAN_ACTION);
-        registerReceiver(mScanReceiver, filter);
+        context.registerReceiver(mScanReceiver, filter);
     }
 
   
